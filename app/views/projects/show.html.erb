@@ -1,0 +1,17 @@
+<h1><%= @project.name %></h1>
+
+<p>Due Date: <%= @project.due_date.strftime('%A, %b %d') %> </p>
+
+Not Done
+<ul>
+<% @project.incomplete.each do |t| %>
+    <li><%= t.title %> </li>
+<% end %>
+</ul>
+
+Done
+<ul>
+<% @project.complete.each do |t| %>
+    <li><%= t.title %> </li>
+<% end %>
+</ul>
