@@ -1,17 +1,22 @@
 class ProjectsController < ApplicationController
     layout "projects"
+    before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
       @projects = Project.all
-      render :other
     end
     
     def show
-        @project = Project.find_by_id(params[:id])
     end
 
     def something
 
+    end
+
+    def destroy
+        @project.delete
+
+        redirect_to projects_path
     end
 
     def overdue
@@ -32,9 +37,19 @@ class ProjectsController < ApplicationController
         end
     end
 
-
+    def edit
+    end
+    
+    def update
+        @project.update(project_params)
+        redirect_to project_path(@project)
+    end
+    
+    
     private
-
+    def set_project
+        @project = Project.find_by(id: params[:id])
+    end
         def project_params
             params.require(:project).permit(:name, :description, :due_date)
         end
