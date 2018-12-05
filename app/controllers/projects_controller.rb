@@ -30,6 +30,9 @@ class ProjectsController < ApplicationController
     def create
         @project = Project.new(project_params)
 
+        # @project.tasks.build
+        binding.pry
+
         if @project.save
             redirect_to project_path(@project)
         else
@@ -47,10 +50,13 @@ class ProjectsController < ApplicationController
     
     
     private
+    def notify_user
+        Send eia
+    end
     def set_project
         @project = Project.find_by(id: params[:id])
     end
         def project_params
-            params.require(:project).permit(:name, :description, :due_date)
+            params.require(:project).permit(:name, :description, :due_date, :email, :public_notice)
         end
 end

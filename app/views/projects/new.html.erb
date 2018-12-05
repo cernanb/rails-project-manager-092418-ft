@@ -4,5 +4,10 @@
     <%= f.text_field :name, class: 'form-control' %>
     <%= f.text_field :description %>
     <%= f.datetime_select :due_date %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :public_notice %>
+   
+    <input type="checkbox" name="project[public_notice]" >
     <%= f.submit %>
 <% end %>
