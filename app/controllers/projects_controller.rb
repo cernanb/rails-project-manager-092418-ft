@@ -1,9 +1,11 @@
 class ProjectsController < ApplicationController
     layout "projects"
     before_action :set_project, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate, only: [:index]
+
 
     def index
-      @projects = Project.all
+         @projects = Project.all
     end
     
     def show
@@ -25,13 +27,16 @@ class ProjectsController < ApplicationController
 
     def new
         @project = Project.new
+        params[:tasks].to_i.times do
+            @project.tasks.build
+        end
     end
 
     def create
         @project = Project.new(project_params)
 
         # @project.tasks.build
-        binding.pry
+        # binding.pry
 
         if @project.save
             redirect_to project_path(@project)
@@ -53,10 +58,15 @@ class ProjectsController < ApplicationController
     def notify_user
         Send eia
     end
+
+  
     def set_project
         @project = Project.find_by(id: params[:id])
     end
         def project_params
-            params.require(:project).permit(:name, :description, :due_date, :email, :public_notice)
+            params.require(:project).permit(:name, :description, :due_date, :email, :public_notice, :tasks_attributes => [
+                :title,
+                :description
+            ])
         end
 end

@@ -10,7 +10,13 @@
   </head>
 
   <body>
-    <nav>Projects Navbar</nav>
+    <nav>
+    <ul>
+     <li><%= link_to "Home", root_path %></li>
+     <li><%= link_to "New Project", new_project_path %></li>
+     <li><%= link_to "Projects", projects_path %></li>
+    </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

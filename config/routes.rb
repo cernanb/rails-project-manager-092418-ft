@@ -9,9 +9,12 @@ Rails.application.routes.draw do
 
   resources :tasks
 
-  get '/something', to: 'projects#something'
-
   get '/projects/overdue', to: 'projects#overdue', as: 'overdue'
 
   root 'application#home'
+
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
+
+  resources :users, only: [:new, :create]
 end

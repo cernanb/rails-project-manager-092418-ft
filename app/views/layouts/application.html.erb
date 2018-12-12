@@ -10,7 +10,15 @@
   </head>
 
   <body>
-    <nav>Application Navbar</nav>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
+    <nav>
+    <ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Projects", projects_path %></li>
+    </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

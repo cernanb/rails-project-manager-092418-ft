@@ -7,7 +7,15 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
     <%= f.label :public_notice %>
-   
-    <input type="checkbox" name="project[public_notice]" >
+    <%= f.check_box :public_notice, {}, 1, 0 %>
+    <div>
+        <h1>Create Initial Tasks</h1>
+        <%= f.fields_for :tasks do |task_form|%>
+            <%= task_form.label :title %>
+            <%= task_form.text_field :title %>
+            <%= task_form.label :description %>
+            <%= task_form.text_field :description %>
+        <% end %>
+    </div>
     <%= f.submit %>
 <% end %>
