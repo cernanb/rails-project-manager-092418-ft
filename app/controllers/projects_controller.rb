@@ -5,7 +5,12 @@ class ProjectsController < ApplicationController
 
 
     def index
-         @projects = Project.all
+        @projects = Project.all
+        respond_to do |f|
+            f.html
+            f.json {render json: @projects}
+        end
+         
     end
     
     def show

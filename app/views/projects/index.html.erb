@@ -1,5 +1,5 @@
 <h1>My Projects</h1>
 
-<% current_user.projects.each do |project|%>
-    <h3><%= link_to project.name, project_path(project) %> - <%= link_to "Delete", project_path(project), :method => :delete %></h3>
-<% end %>
+<div id="projects">
+    <button id="btn">Click to view Projects</button>
+</div>

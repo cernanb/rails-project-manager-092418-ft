@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
   root 'application#home'
 
-  # get '/login', to: 'sessions#login'
-  # post '/login', to: 'sessions#create'
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
 
-  # resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create]
 end

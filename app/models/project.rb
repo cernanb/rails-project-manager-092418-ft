@@ -2,9 +2,9 @@ class Project < ApplicationRecord
     validates :name, :due_date, presence: true
     # validates :name, exclusion: { in: %w(% *),
     # message: "%{value} is reserved." }
-    belongs_to :user
+    # belongs_to :user
 
-    validates :public_notice, acceptance: { message: 'must be checked!!!' }
+    # validates :public_notice, acceptance: { message: 'must be checked!!!' }
 
 
     has_many :tasks
